@@ -1,15 +1,28 @@
-# MyAngularNxStarter
+# My Angular Nx Starter
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is almost ready ✨.
+The purpose of this project is to develop a template that contains all of the libraries that I enjoy using and has been prepared so that I can begin working on a new project or experiment with new features.
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/tutorials/angular-monorepo-tutorial?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## Features
+- TBD
 
-## Finish your CI setup
+## How To Use?
 
-[Click here to finish setting up your workspace!](https://cloud.nx.app/connect/O6noxt6YV4)
+### Create a project using this template
+1. Click "Use this template"
+   At the top of the file list, click the "Use this template" button.
+2. Select "Create a new repository"
+3. Name Your Repository
+Optionally, add a description and choose whether the repository is public or private.
+4. You're Ready to Go! 🔥
 
+## Make it yours
+
+This template includes a collection of apps and libraries designed to demonstrate the use of a monorepo and provide a solid starting point. However, you are not required to use the same names. You can rename the projects as needed.
+
+```sh
+`nx g @nrwl/workspace:mv --project meetup-organizer --destination my-app`
+```
 
 ## Run tasks
 
