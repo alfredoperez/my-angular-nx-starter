@@ -2,7 +2,9 @@
   "name": "@my-angular-nx-starter/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "update": "nx migrate latest"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~18.2.0",
