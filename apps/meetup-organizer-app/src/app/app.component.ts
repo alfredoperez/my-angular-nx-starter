@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonComponent } from '@ui-alfie';
 import {MatButtonModule} from '@angular/material/button';
+
 @Component({
   standalone: true,
   imports: [ RouterModule, ButtonComponent, MatButtonModule],

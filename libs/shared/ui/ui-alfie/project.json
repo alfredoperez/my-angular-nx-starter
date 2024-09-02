@@ -2,7 +2,7 @@
   "name": "shared-ui-alfie",
   "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/shared/ui/ui-alfie/src",
-  "prefix": "alfie",
+  "prefix": "a",
   "projectType": "library",
   "tags": ["domain:shared", "type:ui"],
   "targets": {
