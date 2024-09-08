@@ -3,8 +3,9 @@ import { Component, input, output } from '@angular/core';
 import { ButtonSize, ButtonType } from './button.models';
 
 @Component({
-  selector: 'a-button',
   standalone: true,
+  selector: 'a-button',
+
   template: `
     <button
       class="btn"
@@ -28,7 +29,7 @@ import { ButtonSize, ButtonType } from './button.models';
       <ng-content />
     </button>
   `,
-  imports: [NgClass],
+  imports: [NgClass]
 })
 export class ButtonComponent {
   size = input<ButtonSize>('md');
