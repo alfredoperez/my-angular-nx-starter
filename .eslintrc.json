@@ -111,6 +111,13 @@
                 "onlyDependOnLibsWithTags": [
                   "domain:shared"
                 ]
+              },
+              {
+                "sourceTag": "domain:speaker",
+                "onlyDependOnLibsWithTags": [
+                  "domain:speaker",
+                  "domain:shared"
+                ]
               }
             ]
           }

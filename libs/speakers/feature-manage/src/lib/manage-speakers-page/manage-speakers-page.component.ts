@@ -3,10 +3,10 @@ import { ChangeDetectionStrategy, Component, computed, effect, inject } from '@a
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { DataViewerStore } from '@my/shared/util-data-viewer-store';
+import { Speaker, speakerQuery } from '@my/speakers/domain';
 import { ButtonComponent, ModalService } from '@ui-alfie';
 import { AgGridAngular } from 'ag-grid-angular';
 import { RowClickedEvent } from 'ag-grid-community';
-import { Speaker, speakerQuery } from '../../../../domain/src';
 import { columnDefs } from './manage-speakers-page.models';
 
 @Component({
