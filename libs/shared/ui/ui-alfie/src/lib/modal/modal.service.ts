@@ -21,7 +21,6 @@ export class ModalService {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private newComponent!: ComponentRef<any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-
   private modalSubject!: Subject<any>;
   /**
    * Internal use only.

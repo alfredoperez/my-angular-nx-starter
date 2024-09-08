@@ -12,8 +12,4 @@ export class ManageFacade {
   constructor(private speakerDataService: SpeakerDataService) {
   }
 
-  load(): void {
-
-  }
-
 }
