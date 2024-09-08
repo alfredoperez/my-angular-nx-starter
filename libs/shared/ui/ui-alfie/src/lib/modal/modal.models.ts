@@ -29,18 +29,20 @@ export interface Options {
 
 export const DefaultOptions: Options = {
   modal: {
-    enter: 'enter-scale-down .4s ease-out',
+    enter: 'enter-scale-down .4s ease-out'
   },
   overlay: {
-    leave: 'fade-out 0.3s',
+    leave: 'fade-out 0.3s'
   },
   size: {
     width: '400px',
     height: 'auto',
-    maxWidth: '600px',
-  },
+    maxWidth: '600px'
+  }
 };
+
 export interface SubjectModal {
   subject: Subject<unknown>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   contentCpRef: ComponentRef<any>;
 }

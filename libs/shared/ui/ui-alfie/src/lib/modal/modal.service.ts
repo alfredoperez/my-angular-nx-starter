@@ -2,23 +2,26 @@ import { isPlatformBrowser } from '@angular/common';
 import {
   ApplicationRef,
   ComponentRef,
+  createComponent,
   EnvironmentInjector,
   Inject,
   Injectable,
   PLATFORM_ID,
-  Type,
-  createComponent,
+  Type
 } from '@angular/core';
 import { Subject } from 'rxjs';
 import { ModalComponent } from './modal.component';
 import { Options, SubjectModal } from './modal.models';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ModalService {
   private newModalComponent!: ComponentRef<ModalComponent>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private newComponent!: ComponentRef<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+
   private modalSubject!: Subject<any>;
   /**
    * Internal use only.
@@ -38,7 +41,8 @@ export class ModalService {
   constructor(
     private appRef: ApplicationRef,
     private injector: EnvironmentInjector,
-    @Inject(PLATFORM_ID) platformId: Object,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    @Inject(PLATFORM_ID) platformId: any
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
@@ -78,18 +82,18 @@ export class ModalService {
     if (!this.isBrowser) return;
 
     this.newComponent = createComponent(componentToCreate, {
-      environmentInjector: this.injector,
+      environmentInjector: this.injector
     });
 
     this.newModalComponent = createComponent(ModalComponent, {
       environmentInjector: this.injector,
-      projectableNodes: [[this.newComponent.location.nativeElement]],
+      projectableNodes: [[this.newComponent.location.nativeElement]]
     });
 
     this.instantiateProps(options?.data);
     this.modalSubjects.push({
       subject: this.modalSubject,
-      contentCpRef: this.newComponent,
+      contentCpRef: this.newComponent
     });
 
     document.body.appendChild(this.newModalComponent.location.nativeElement);
