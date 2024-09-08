@@ -15,7 +15,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/speaker/domain/jest.config.ts"
+        "jestConfig": "libs/speakers/domain/jest.config.ts"
       }
     },
     "lint": {
