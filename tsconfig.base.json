@@ -10,33 +10,21 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
+    "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@my/speakers/domain": [
-        "libs/speakers/domain/src/index.ts"
-      ],
-      "@my/shared/util-api": [
-        "libs/shared/util-api/src/index.ts"
-      ],
+      "@my/shared/util-api": ["libs/shared/util-api/src/index.ts"],
       "@my/shared/util-data-viewer-store": [
         "libs/shared/util-data-viewer-store/src/index.ts"
       ],
+      "@my/speakers/domain": ["libs/speakers/domain/src/index.ts"],
       "@my/speakers/feature-manage": [
         "libs/speakers/feature-manage/src/index.ts"
       ],
-      "@ui-alfie": [
-        "libs/shared/ui/ui-alfie/src/index.ts"
-      ]
+      "@ui-alfie": ["libs/shared/ui/ui-alfie/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }
