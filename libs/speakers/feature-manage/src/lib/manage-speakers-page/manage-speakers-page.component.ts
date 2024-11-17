@@ -1,33 +1,47 @@
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, effect, inject } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+} from '@angular/core';
 import { Router } from '@angular/router';
-import { DataViewerStore } from '@my/shared/util-data-viewer-store';
-import { Speaker, speakerQuery } from '@my/speakers/domain';
-import { ButtonComponent, ModalService } from '@ui-alfie';
 import { AgGridAngular } from 'ag-grid-angular';
 import { RowClickedEvent } from 'ag-grid-community';
+import { DataViewerStore } from '@my/shared/util-data-viewer-store';
+import { Speaker, useSpeakerQuery } from '@my/speakers/domain';
+import { ButtonComponent } from './button/button.component';
 import { columnDefs } from './manage-speakers-page.models';
 
 @Component({
   standalone: true,
-  imports: [CommonModule, AgGridAngular, MatPaginator, ButtonComponent],
+  imports: [CommonModule, AgGridAngular, ButtonComponent],
   providers: [DataViewerStore],
   templateUrl: 'manage-speakers-page.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styles: [
+    `
+      :host {
+        display: flex;
+        flex-direction: column;
+        height: 93%;
+      }
+
+      ag-grid-angular {
+        height: 93%;
+        min-height: 300px;
+      }
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ManageSpeakersPageComponent {
-  // injects
   store = inject(DataViewerStore);
-  // signals
-  speakerQuery = speakerQuery.page(this.store.requestOptions);
-  users = computed(() => this.speakerQuery.data()?.items || []);
-  totalItems = computed(() => this.speakerQuery.data()?.total || 0);
-  isPlaceholderData = this.speakerQuery.isPlaceholderData;
-  prefetchNextPage = speakerQuery.prefetchNextPage(this.store.requestOptions);
-  // props
+  private query = useSpeakerQuery();
+
+  speakerQuery = this.query.list(this.store.requestOptions);
+  prefetchNextPage = this.query.prefetchNextPage(this.store.requestOptions);
+
   protected readonly columnDefs = columnDefs;
-  #modalService = inject(ModalService);
   #router = inject(Router);
 
   constructor() {
@@ -36,37 +50,32 @@ export class ManageSpeakersPageComponent {
         !this.speakerQuery.isPlaceholderData() &&
         this.speakerQuery.data()?.hasMore
       ) {
-        this.prefetchNextPage.prefetch();
+        this.prefetchNextPage.execute();
       }
     });
   }
 
-  public addUser() {
-    // this.#modalService.open(AddUserModalComponent, DefaultOptions);
+  public onAddUser() {
+    // todo: this.#modalService.open(AddUserModalComponent, DefaultOptions);
   }
 
-  public handleRowClicked(event: RowClickedEvent<Speaker>) {
+  public onSpeakerClicked(event: RowClickedEvent<Speaker>) {
     if (!event.data) {
       return;
     }
-    this.#router.navigate(['/users', event.data.id]);
+    this.#router.navigate(['/speakers', event.data.id]);
   }
 
-  // handleCurrentPageChange(page: number) {
-  //   this.store.setPage(page);
+  // onChangePage(pageEvent) {
+  //   this.store.setPage(pageEvent.pageIndex);
   // }
 
-  handleCurrentPageChange(pageEvent: PageEvent) {
-    this.store.setPage(pageEvent.pageIndex);
-  }
-
-  handleSortChanged() {
+  onSort() {
     // TODO: need to implement this
   }
 
-  handleSearchQueryChange(event: Event) {
+  onSearch(event: Event) {
     const value = (event.target as HTMLInputElement).value;
     this.store.setSearchQuery(value);
   }
 }
-

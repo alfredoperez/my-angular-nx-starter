@@ -16,5 +16,31 @@
     "lint": {
       "executor": "@nx/eslint:lint"
     },
+    "build": {
+      "options": {
+        "assets": [
+          // ... other assets
+          {
+            "glob": "**/*",
+            "input": "node_modules/primeicons/fonts",
+            "output": "assets/fonts"
+          }
+        ]
+      }
+    },
+    "storybook": {
+      "options": {
+        "styles": [
+
+        ]
+      }
+    },
+    "build-storybook": {
+      "options": {
+        "styles": [
+        ]
+      }
+    }
   }
+  
 }

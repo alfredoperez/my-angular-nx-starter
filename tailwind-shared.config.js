@@ -1,7 +1,6 @@
-
-export  default {
-    plugins: [require('daisyui')],
-    daisyui: {
-      themes: ['synthwave'],
-    },
+export default {
+  theme: {
+    extend: {},
+  },
+  plugins: [],
 };

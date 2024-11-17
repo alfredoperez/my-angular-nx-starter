@@ -6,6 +6,7 @@
     "@trivago/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss"
   ],
+  "arrowParens": "avoid",
   "attributeGroups": [
     "^(id|name)$",
     "$ANGULAR_STRUCTURAL_DIRECTIVE",
@@ -42,8 +43,5 @@
   ],
   "importOrderSeparation": false,
   "importOrderSortSpecifiers": true,
-  "importOrderParserPlugins": [
-    "typescript",
-    "decorators-legacy"
-  ]
+  "importOrderParserPlugins": ["typescript", "decorators-legacy"]
 }

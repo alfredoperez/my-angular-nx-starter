@@ -4,6 +4,10 @@
   },
   "files": [],
   "include": [],
+  "angularCompilerOptions": {
+    "strictTemplates": true,
+    "strictInjectionParameters": true,
+  },
   "references": [
     {
       "path": "./tsconfig.lib.json"

@@ -1,0 +1,30 @@
+<div class="bg-base-100 flex flex-col p-8" [formGroup]="speakerForm">
+  <h1 class="text-2xl font-semibold">Speaker</h1>
+  <pre>{{ id() | json }}</pre>
+  <div class="mt-4 flex flex-col gap-4">
+    <input
+      type="text"
+      class="input input-bordered input-primary w-full max-w-xs"
+      placeholder="Name"
+      formControlName="name"
+    />
+    <input
+      type="number"
+      class="input input-bordered input-primary w-full max-w-xs"
+      placeholder="Age"
+      formControlName="age"
+    />
+  </div>
+  <div class="mt-4 flex justify-between">
+    <button class="btn btn-outline btn-error" (click)="onDelete()">
+      Delete
+    </button>
+    <button
+      class="btn btn-primary"
+      [disabled]="!speakerForm.valid"
+      (click)="onSave()"
+    >
+      Save
+    </button>
+  </div>
+</div>

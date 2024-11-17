@@ -1,9 +1,11 @@
 import { provideHttpClient } from '@angular/common/http';
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
-import { provideAngularQuery, QueryClient } from '@tanstack/angular-query-experimental';
+import {
+  QueryClient,
+  provideAngularQuery,
+} from '@tanstack/angular-query-experimental';
 import { appRoutes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -13,6 +15,5 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimations(),
     provideAngularQuery(new QueryClient()),
-    provideRouter(appRoutes), provideAnimationsAsync()
-  ]
+  ],
 };
