@@ -1,65 +1,53 @@
-    <div class="flex h-full flex-col gap-6">
-      <div class="flex  items-center justify-between gap-6">
-        <h1 class="text-2xl font-semibold">Users</h1>
-        <a-button type="primary" (click)="addUser()">Add User</a-button>
+<div
+  class="flex-column mx-auto flex w-full p-6"
+  style="max-width: 64rem; height: 100%"
+>
+  <div class="align-items-center justify-content-between mb-6 flex">
+    <h1 class="text-2xl font-semibold">Speakers</h1>
+    <a-button type="primary" (click)="onAddUser()" label="Add Speaker" />
+  </div>
+  <div class="mx-auto mb-6 w-full" style="max-width: 64rem">
+    <label class="align-items-center p-input-filled flex w-full gap-2">
+      <input
+        type="text"
+        class="flex-grow-1"
+        (input)="onSearch($event)"
+        placeholder="Search"
+        pInputText
+      />
+      <i class="pi pi-search text-500" style="font-size: 1rem"></i>
+    </label>
+  </div>
+  <div
+    class="flex-column flex-grow-1 mx-auto flex w-full"
+    style="max-width: 64rem"
+  >
+    @if (speakerQuery.isPending()) {
+      <div class="flex-grow-1 justify-content-center align-items-center flex">
+        <!-- <p-progressSpinner /> -->
       </div>
-      <div>
-        <label
-          class="input input-bordered flex items-center gap-2"
-          style="width: 1000px; "
-        >
-          <input
-            type="text"
-            class="grow"
-            (change)="handleSearchQueryChange($event)"
-            placeholder="Search"
-          />
-          <svg
-            class="h-4 w-4 opacity-70"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-        </label>
-      </div>
-      <div class="">
-        @if (speakerQuery.isPending()) {
-          <div>Loading...</div>
-        }
+    }
 
-        @if (speakerQuery.isError()) {
-          <span> Error</span>
-        }
-        @if (speakerQuery.isSuccess()) {
-          <div [style.opacity]="isPlaceholderData() ? 0.5 : 1">
-            <ag-grid-angular
-              class="ag-theme-alpine border-round "
-              [rowData]="users()"
-              [columnDefs]="columnDefs"
-              (rowClicked)="handleRowClicked($event)"
-              style="width: 100%; height: 500px; max-width: 1000px"
-            />
-
-            <mat-paginator
-              #paginator
-              aria-label="Select page"
-              class="demo-paginator"
-              [length]="totalItems()"
-              [pageSize]="20"
-              [disabled]="isPlaceholderData()"
-              [showFirstLastButtons]="false"
-              [hidePageSize]="true"
-              [pageIndex]="0"
-              (page)="handleCurrentPageChange($event)"
-            >
-            </mat-paginator>
-          </div>
-        }
+    @if (speakerQuery.isError()) {
+      <div class="p-message p-message-error">
+        <i class="pi pi-times-circle"></i>
+        <span class="p-message-text">Error: Unable to load users.</span>
       </div>
-    </div>
+    }
+    @if (speakerQuery.isSuccess()) {
+      <div
+        class="flex-column flex-grow-1 flex"
+        [style.opacity]="speakerQuery.isPlaceholderData() ? '0.5' : '1'"
+      >
+        <ag-grid-angular
+          class="flex-grow-1 ag-theme-alpine w-full"
+          [rowData]="speakerQuery.data().items"
+          [columnDefs]="columnDefs"
+          [domLayout]="'normal'"
+          (rowClicked)="onSpeakerClicked($event)"
+          (sortChanged)="onSort()"
+        />
+      </div>
+    }
+  </div>
+</div>

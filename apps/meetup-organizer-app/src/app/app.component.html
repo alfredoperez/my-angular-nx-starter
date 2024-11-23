@@ -1,6 +1,11 @@
-<div class="flex h-full items-center justify-center p-8">
-  <div class="max-w-6xl">
+<div class="flex-column flex" style="height: 100vh">
+  <header class="bg-primary p-4">
+    <h1 class="text-2xl font-bold">Meetup Organizer</h1>
+  </header>
+  <main class="flex-grow-1 overflow-auto">
     <router-outlet></router-outlet>
-  </div>
+  </main>
+  <footer class="bg-gray-800 p-4 text-center">
+    <p>&copy; 2023 Meetup Organizer</p>
+  </footer>
 </div>
-

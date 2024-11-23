@@ -6,7 +6,6 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  selector: 'app-root'
+  selector: 'app-root',
 })
-export class AppComponent {
-}
+export class AppComponent {}

@@ -1,0 +1,56 @@
+import { ArgTypes, Controls, Meta, Story } from '@storybook/blocks';
+import { ButtonComponent } from './button.component';
+import * as ButtonStories from './button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button Component
+
+A versatile button component built on top of PrimeNG's button, providing various styles, sizes, and accessibility features.
+
+## Key Features
+
+- Multiple visual styles through the `type` property
+- Three size options: small, normal, and large
+- Icon support with customizable positioning
+- Built-in accessibility features
+- Tooltip support
+
+## Accessibility
+
+The button component follows accessibility best practices:
+
+- Proper ARIA labels for icon-only buttons
+- Keyboard navigation support
+- Focus management
+- Optional tooltips for additional context
+
+## Usage Examples
+
+### Basic Button
+
+The most common use case is a simple button with text:
+
+<Story of={ButtonStories.Default} />
+
+### Button with Icon
+
+Add icons to enhance visual communication:
+
+<Story of={ButtonStories.WithIcon} />
+
+### Different Types
+
+Choose from various visual styles to match your needs:
+
+<Story of={ButtonStories.Types} />
+
+### Sizes
+
+Available in three sizes to fit your layout:
+
+<Story of={ButtonStories.Sizes} />
+
+### Inputs & Outputs
+
+<ArgTypes of={ButtonComponent} sort="alpha" />

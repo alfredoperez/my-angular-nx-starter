@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "nx",
+      "project": "",
+      "command": "run",
+      "positional": "meetup-organizer-app:serve",
+      "flags": [],
+      "problemMatcher": [],
+      "label": "Serve Meetup Organizer App"
+    },
+    {
+      "type": "npm",
+      "script": "start-json-server",
+      "problemMatcher": [],
+      "label": "Run JSON Server"
+    },
+    {
+      "label": "Develop",
+      "dependsOn": ["Serve Meetup Organizer App", "Run JSON Server"],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}

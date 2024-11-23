@@ -1,14 +1,14 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { inject } from '@angular/core';
 import { delay, lastValueFrom } from 'rxjs';
-import { ListResponse, Pagination, RequestOptions } from './api.models';
+import { ListResponse, Pagination, RequestOptions } from './entity-api.models';
 
-export abstract class ApiService<T> {
+export abstract class EntityApiService<T> {
   #httpClient = inject(HttpClient);
 
   protected constructor(private entityName: string) {}
 
-  public async fetchPage(
+  public async getList(
     requestOptions?: Partial<RequestOptions>,
   ): Promise<ListResponse<T>> {
     const result = await this.request<Array<T>>('GET', {
@@ -24,7 +24,7 @@ export abstract class ApiService<T> {
     return mappedResponse;
   }
 
-  public fetchById(
+  public getById(
     id: string,
     requestOptions?: Partial<RequestOptions>,
   ): Promise<T> {
@@ -46,7 +46,7 @@ export abstract class ApiService<T> {
     return this.request('PUT', requestOptions, body, id);
   }
 
-  public delete(
+  public remove(
     id: string,
     requestOptions?: Partial<RequestOptions>,
   ): Promise<T> {
@@ -100,7 +100,7 @@ export abstract class ApiService<T> {
     if (!response.headers) {
       return {} as ListResponse<T>;
     }
-    const total = Number(response.headers.get('X-Total-Count'));
+    const total = Number(response.headers.get('X-Total-Count')) || 0;
     let hasMore = false;
 
     if (pagination) {
@@ -111,7 +111,7 @@ export abstract class ApiService<T> {
     }
 
     return {
-      items: response.body,
+      items: response.body || [],
       total,
       hasMore,
       pagination,
