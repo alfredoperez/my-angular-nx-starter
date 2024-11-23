@@ -4,7 +4,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import {
   QueryClient,
-  provideAngularQuery,
+  provideTanStackQuery,
+  withDevtools,
 } from '@tanstack/angular-query-experimental';
 import { appRoutes } from './app.routes';
 
@@ -14,6 +15,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes, withComponentInputBinding()),
     provideHttpClient(),
     provideAnimations(),
-    provideAngularQuery(new QueryClient()),
+    provideTanStackQuery(new QueryClient(), withDevtools()),
   ],
 };
